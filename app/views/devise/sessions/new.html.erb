@@ -1,0 +1,40 @@
+</br></br>
+<h1 class="title is-1">Login</h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="field">
+    <%= f.label 'E-mail', class: 'label' %>
+    <div class="control has-icons-left">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input',  placeholder: 'exemplo@email.com' %>
+      <span class="icon is-small is-left">
+        <i class="fi-rr-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Senha', class: 'label' %>
+    <div class="control has-icons-left">
+      <%= f.password_field :password, autofocus: true, autocomplete: "current-password", class: 'input', placeholder: '******' %>
+      <span class="icon is-small is-left">
+        <i class="fi-rr-lock"></i>
+      </span>
+    </div>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field" style="display: inline;">
+      <%= f.check_box :remember_me, class: 'checkbox' %>
+      <%= f.label :lembre_de_mim, class: 'checkbox'%>
+    </div>
+  <% end %>
+
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class: 'is-pulled-right' %><br/>
+  <% end %>
+  <br/>
+  <div class="actions">
+    <%= f.submit "Log in", class: 'button is-success' %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+</br></br>
+<h1 class="title is-1">Registrar-se</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label 'E-mail', class: 'label' %>
+    <div class="control has-icons-left">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input', placeholder: 'exemplo@email.com' %>
+      <span class="icon is-small is-left">
+        <i class="fi-rr-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="senha" class="label">
+      Senha
+      <% if @minimum_password_length %>
+        <em style="font-weight: 300;">mínimo de (<%= @minimum_password_length %> caracteres)</em>
+      <% end %><br />
+    </label>
+    <div class="control has-icons-left">
+      <%= f.password_field :password, autocomplete: "new-password", class: 'input', placeholder: '******' %>
+      <span class="icon is-small is-left">
+        <i class="fi-rr-lock"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+      <%= f.label :Confirmação_da_senha, class: 'label' %>
+      <div class="control has-icons-left">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input', placeholder: '******'  %>
+      <span class="icon is-small is-left">
+        <i class="fi-rr-lock"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: 'button is-success' %>
+  </div>
+<% end %>

@@ -1,0 +1,70 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <!-- <img src="" width="auto" height='auto'> -->
+        <h1 style="font-size: 27px;">Blog</h1>
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href='/posts/new'>
+          <i class="fi-rr-file-add" style="margin-right: 7px;"></i>
+           Nova Publicação
+        </a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% unless user_signed_in? %>
+              <a class="button is-link" href='/users/sign_up'>
+                <strong>Cadastre-se</strong>
+              </a>
+              <a class="button is-light" href='/users/sign_in'>
+                Entrar
+              </a>
+            <% end %>
+            <% if user_signed_in? %>
+              <a class="button is-light" onclick="document.getElementById('voce-quer-sair').classList.add('is-active');">Sair</a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- destroy_user_session_path, method: :delete -->
+<div id="voce-quer-sair" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="modal-content">
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <div class="columns is-vcentered">
+                <div class="column is-12" style="display: grid; justify-content: center;">
+                  <i class="has-text-warning fi-rr-exclamation" style="text-align: center; font-size: 78px;"></i>
+                  <p class="bd-notification is-primary">Certeza que deseja sair?</p>
+                  <%= link_to "Sim", destroy_user_session_path, method: :delete, class: 'button has-background-info-light'  %>
+                </div>
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" onclick="document.getElementById('voce-quer-sair').classList.remove('is-active');"></button>
+</div>

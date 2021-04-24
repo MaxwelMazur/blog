@@ -1,0 +1,32 @@
+</br></br>
+<h1 class="title is-1">Publicações</h1>
+</br>
+
+<% @posts.each do |post| %>
+  <div class="columns is-vcentered">
+    <div class="column column is-12">
+      <div class="card">
+        <div class="card-image">
+          <% if post.featured_image.attached? %>
+            <figure class="image is-full is-marginless is-3by1">
+              <%= image_tag post.featured_image %>
+            </figure></br>
+          <% end %>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <a href="<%= post_path(id: post.id) %>"><p class="title is-4"><%= post.title %></p></a>
+            </div>
+          </div>
+          <p>Autor: <%= post.author %> - <%= post.created_at.strftime("%d/%m/%Y") %></p>
+
+          <div style="margin-top: 14px;">
+            <i class="fi-rr-trash"></i>
+            <%= link_to 'Deletar', post, method: :delete, data: { confirm: 'Tem certeza?' } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
